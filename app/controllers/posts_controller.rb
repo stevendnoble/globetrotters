@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show]
-  before_action :set_city, except: [:new]
+  before_action :set_city
   before_action :authorize, except: [:show]
 
   def new
@@ -16,9 +16,9 @@ class PostsController < ApplicationController
   def create
     #nested resource to build the post in the city show page
     @post = @city.posts.new(post_params)
-    @post.user.id == current_user.id
+    @post.user_id = current_user.id
     if @post.save
-      redirect_to city_post_path(@post)
+      redirect_to city_post_path(@city, @post)
       flash[:notice] = 'Post successfully created'
     else
       redirect_to new_city_post_path
@@ -40,10 +40,10 @@ class PostsController < ApplicationController
 
     if current_user == @post.user
       if post.update_attributes(post_params)
-        redirect_to city_post_path(@post)
+        redirect_to city_post_path(@city, @post)
         flash[:notice] = 'Post successfully updated'
       else
-        redirect_to edit_city_post_path(@post)
+        redirect_to edit_city_post_path(@city, @post)
         flash[:error] = @post.errors.full_messages.join(', ')
       end
     else
@@ -70,7 +70,7 @@ private
   end
 
   def set_city
-    @city = City.find(params[:id])
+    @city = City.find(params[:city_id])
   end
   def post_params
     params.require(:post).permit(:title, :body, :city_id, :user_id)

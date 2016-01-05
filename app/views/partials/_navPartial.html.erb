@@ -52,7 +52,7 @@
         <% if params[:controller] == 'cities' && params[:action] == 'show' %>
         <ul class="nav navbar-nav pull-right">
           <li>
-            <%= link_to 'New Post', new_post_path %>
+            <%= link_to 'New Post', new_city_post_path(@city, @post) %>
           </li>
         </ul>
         <% end %>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <% if params[:action] == "new" %>
+      <h1 class="text-center">Signup</h1>
+      <hr>
+      <% else %>
+      <h1 class="text-center">Edit Profile</h1>
+      <hr>
+      <% end %>
+      <%= form_for @user, html: {multipart: true} do |f| %>
+        <div class="form-group">
+          <%= f.label :username %>
+          <%= f.text_field :username, class: "form-control", placeholder: "Must be at least 6 characters", autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control", placeholder: "First and last name" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control", placeholder: "example@email.com" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :city_id, "Select Your City" %><br>
+          <%= f.collection_select :city_id, City.all, :id, :name, {}, {class: "btn btn-block btn-default dropdown-toggle"} %>
+        </div>
+        <% if params[controller] == "edit" %>
+        <div class="form-group">
+          <%= f.label :Change_your_picture %>
+          <%= f.file_field :avatar %>
+        </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control", placeholder: "Must be at least 8 characters" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Password Confirmation" %>
+          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Retype your password to confirm" %>
+        </div>
+        <% if params[:action] == "new" %>
+        <%= f.hidden_field :avatar, :value => "https://s3.amazonaws.com/FringeBucket/default-user.png" %>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-block btn-info" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

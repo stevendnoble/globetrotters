@@ -35,6 +35,9 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
+#thin gem for heroku
+gem 'thin'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

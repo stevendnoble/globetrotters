@@ -146,14 +146,29 @@ h1 {
 }
 
 .title2 {
-  font-size: 50px;
-  top: 50%;
+  font-size: 200%;
+  top: 60%;
+  color: #4D6A79;
 }
 
 @media screen and (max-width: 800px) {
   .title { 
-    top: 25%; 
+    top: 15%; 
     font-size: 30px;
+  }
+  .title2{
+    top: 45%;
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 450px){
+  .title { 
+    top: 5%; 
+    font-size: 20px;
+  }
+  .title2{
+    top: 30%;
+    font-size: 80%;
   }
 }
 

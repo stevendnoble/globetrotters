@@ -138,12 +138,18 @@ h1 {
 .title { 
   font-family: "Julius Sans One";
   position: absolute; 
-  top: 30%; 
+  top: 20%; 
   left: 0; 
   width: 100%; 
   font-size: 70px;
   color: white;
 }
+
+.title2 {
+  font-size: 50px;
+  top: 50%;
+}
+
 @media screen and (max-width: 800px) {
   .title { 
     top: 25%; 

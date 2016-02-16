@@ -35,8 +35,8 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 
-#thin gem for heroku
-gem 'thin'
+# #thin gem for heroku
+# gem 'thin'
 #gem for carrierwave storage on s3
 gem 'fog'
 
